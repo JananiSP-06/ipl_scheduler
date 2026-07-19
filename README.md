@@ -6,10 +6,7 @@ PBKS), tracks match results and a points table, and runs the standard 4-match
 playoff bracket (Qualifier 1 → Eliminator → Qualifier 2 → Final) to determine
 a champion.
 
-Two implementations are included, sharing the same core scheduling logic:
 
-- **`standalone/`** — a single terminal program. No web server needed.
-  Good for a quick, zero-setup demo of the scheduling algorithm.
 - **`web/`** — a CGI web app (HTML forms + a C backend) with a styled,
   multi-page browser UI: Setup → Team Fixtures → Stadium Fixtures →
   Results → Playoffs → All-Time Champions.
@@ -21,12 +18,11 @@ Two implementations are included, sharing the same core scheduling logic:
 1. [Repository structure](#repository-structure)
 2. [Features](#features)
 3. [Constraints implemented](#constraints-implemented)
-4. [Standalone version — setup & run](#standalone-version--setup--run)
-5. [Web version — setup & run](#web-version--setup--run)
-6. [Web version — page-by-page workflow](#web-version--page-by-page-workflow)
-7. [Files generated at runtime](#files-generated-at-runtime)
-8. [Troubleshooting](#troubleshooting)
-9. [Known limitations](#known-limitations)
+4. [Web version — setup & run](#web-version--setup--run)
+5. [Web version — page-by-page workflow](#web-version--page-by-page-workflow)
+6. [Files generated at runtime](#files-generated-at-runtime)
+7. [Troubleshooting](#troubleshooting)
+8. [Known limitations](#known-limitations)
 
 ---
 
@@ -44,7 +40,6 @@ ipl-repo/
 ├── playoffs.html          # Run the playoff bracket
 ├── history.html           # All-time champions + past-season browser
 ├── style.css               # Shared styling for all the HTML pages
-└── history.csv            # Season-by-season record (tracked in git)
 ```
 
 ---
@@ -199,19 +194,12 @@ http://localhost/index.html
 | `settings.csv` | Season label + strength ratings (persisted between pages) | No |
 | `season_report.txt` | Plain-text summary of the latest playoffs run | No |
 | `PlayoffResults.csv` | Current season's playoff bracket results | No |
-| `history.csv` | One row per completed season: `Season,Champion,RunnerUp` | **Yes** — seeded with real results |
+| `history.csv` | One row per completed season: `Season,Champion,RunnerUp` | No |
 | `archive_season_N_schedule.csv` | Archived schedule for season N | Your call (see below) |
 | `archive_season_N_results.csv` | Archived match results for season N | Your call |
 | `archive_season_N_points.csv` | Archived points table for season N | Your call |
 | `archive_season_N_playoffs.csv` | Archived playoff bracket for season N | Your call |
 
-The first six files are pure per-run scratch output and are excluded via
-`.gitignore`. `history.csv` is intentionally tracked since it holds
-meaningful season records. Whether to track the `archive_season_N_*` files
-is up to you — track them if you want the repo to ship with the full
-historical detail matching `history.csv`; leave them out (they're already
-gitignored by default) if you'd rather each clone start fresh, since the app
-already handles missing archive data gracefully for any season.
 
 ---
 
