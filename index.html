@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>&#127942; IPL SCHEDULE GENERATOR &#127942;</h1>
+<form action="process.cgi" method="POST">
+ <div class="me">
+
+  <h3>Season Setup</h3>
+  <label for="start">Start Date:</label>
+  <input id="start" type="date" name="start" required><br><br>
+  <label for="end">End Date:</label>
+  <input id="end" type="date" name="end" required><br><br>
+  <label for="season">Season label (for the all-time champions history):</label>
+  <input id="season" type="text" name="season" placeholder="e.g. IPL 2027"><br><br>
+
+  <h3>Venue Blackout Dates (comma-separated YYYY-MM-DD, optional)</h3>
+  <table>
+  <tr><td>KKR:</td><td><input type="text" name="KKR" placeholder="2027-03-25,2027-04-02"></td></tr>
+  <tr><td>GT:</td><td><input type="text" name="GT"></td></tr>
+  <tr><td>CSK:</td><td><input type="text" name="CSK"></td></tr>
+  <tr><td>RCB:</td><td><input type="text" name="RCB"></td></tr>
+  <tr><td>SRH:</td><td><input type="text" name="SRH"></td></tr>
+  <tr><td>MI:</td><td><input type="text" name="MI"></td></tr>
+  <tr><td>DC:</td><td><input type="text" name="DC"></td></tr>
+  <tr><td>LSG:</td><td><input type="text" name="LSG"></td></tr>
+  <tr><td>RR:</td><td><input type="text" name="RR"></td></tr>
+  <tr><td>PBKS:</td><td><input type="text" name="PBKS"></td></tr>
+  </table>
+
+  <h3>Team Strength Ratings (1-100, blank = 50)</h3>
+  <p class="hint">Used later for weighted result simulation on the Results page - you won't
+  need to re-enter these, they're saved automatically.</p>
+  <table>
+  <tr><td>KKR:</td><td><input type="number" min="1" max="100" name="strength_KKR"></td></tr>
+  <tr><td>GT:</td><td><input type="number" min="1" max="100" name="strength_GT"></td></tr>
+  <tr><td>CSK:</td><td><input type="number" min="1" max="100" name="strength_CSK"></td></tr>
+  <tr><td>RCB:</td><td><input type="number" min="1" max="100" name="strength_RCB"></td></tr>
+  <tr><td>SRH:</td><td><input type="number" min="1" max="100" name="strength_SRH"></td></tr>
+  <tr><td>MI:</td><td><input type="number" min="1" max="100" name="strength_MI"></td></tr>
+  <tr><td>DC:</td><td><input type="number" min="1" max="100" name="strength_DC"></td></tr>
+  <tr><td>LSG:</td><td><input type="number" min="1" max="100" name="strength_LSG"></td></tr>
+  <tr><td>RR:</td><td><input type="number" min="1" max="100" name="strength_RR"></td></tr>
+  <tr><td>PBKS:</td><td><input type="number" min="1" max="100" name="strength_PBKS"></td></tr>
+  </table>
+
+  <h3>Holiday / High-Attendance Dates (comma-separated, optional)</h3>
+  <input type="text" name="holidays" placeholder="2027-03-28,2027-04-14"><br><br>
+
+  <button type="submit" name="action" value="schedule">Generate Schedule</button>
+ </div>
+</form>
+
+<p style="text-align:center;margin-top:20px;">
+  <a class="nav" href="fixtures.html">Team Fixtures</a>
+  <a class="nav" href="stadium.html">Stadium Fixtures</a>
+  <a class="nav" href="results.html">Enter / Simulate Results</a>
+  <a class="nav" href="playoffs.html">Run Playoffs</a>
+  <a class="nav" href="history.html">All-Time Champions</a>
+</p>
+</body>
+</html>

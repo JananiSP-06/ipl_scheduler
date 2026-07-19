@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>&#127942; Playoffs &#127942;</h1>
+<form action="process.cgi" method="POST">
+ <div class="me">
+  <p class="hint">Run this after the points table has been computed on the Results page.
+  Leave the fields below blank to auto-decide winners by team strength, or type the winning
+  team's code once you know the actual top 4 (shown when you submit this form).</p>
+  <input type="text" name="playoff1" placeholder="Qualifier 1 winner (e.g. CSK)"><br><br>
+  <input type="text" name="playoff2" placeholder="Eliminator winner"><br><br>
+  <input type="text" name="playoff3" placeholder="Qualifier 2 winner"><br><br>
+  <input type="text" name="playoff4" placeholder="Final winner"><br><br>
+  <button type="submit" name="action" value="playoffs">Run Playoffs</button>
+ </div>
+</form>
+<p style="text-align:center;margin-top:20px;">
+  <a class="nav" href="index.html">Setup / New Season</a>
+  <a class="nav" href="fixtures.html">Team Fixtures</a>
+  <a class="nav" href="stadium.html">Stadium Fixtures</a>
+  <a class="nav" href="results.html">Enter / Simulate Results</a>
+  <a class="nav" href="history.html">All-Time Champions</a>
+</p>
+</body>
+</html>

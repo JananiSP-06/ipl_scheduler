@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>&#127942; Match Results &#127942;</h1>
+<form action="process.cgi" method="POST">
+ <div class="me">
+  <p class="hint">Leave this blank to auto-simulate the entire season using the strength ratings
+  you set on the Setup page. To override specific matches, paste one line per league match
+  <b>in the same order as the generated schedule</b>: <code>runs1,runs2</code> or
+  <code>runs1,runs2,player-of-match</code>. Leave a line blank to auto-simulate just that match -
+  mix manual and simulated freely.</p>
+  <textarea name="results" placeholder="180,165,MS Dhoni&#10;&#10;190,188"></textarea><br><br>
+  <button type="submit" name="action" value="results">Compute Points Table</button>
+ </div>
+</form>
+<p style="text-align:center;margin-top:20px;">
+  <a class="nav" href="index.html">Setup / New Season</a>
+  <a class="nav" href="fixtures.html">Team Fixtures</a>
+  <a class="nav" href="stadium.html">Stadium Fixtures</a>
+  <a class="nav" href="playoffs.html">Run Playoffs</a>
+  <a class="nav" href="history.html">All-Time Champions</a>
+</p>
+</body>
+</html>
