@@ -7,7 +7,7 @@ playoff bracket (Qualifier 1 → Eliminator → Qualifier 2 → Final) to determ
 a champion.
 
 
-- **`web/`** — a CGI web app (HTML forms + a C backend) with a styled,
+- A CGI web app (HTML forms + a C backend) with a styled,
   multi-page browser UI: Setup → Team Fixtures → Stadium Fixtures →
   Results → Playoffs → All-Time Champions.
 
@@ -72,20 +72,22 @@ ipl-repo/
 
 ## Constraints implemented
 
-| Constraint | Status |
-|---|---|
-| Every team plays every other team twice (home & away) | ✅ |
-| No team plays two matches same day | ✅ |
-| Each team plays half its matches at home | ✅ |
-| A venue can't host multiple matches at once | ✅ |
-| Venue blackout dates respected | ✅ |
-| One match on weekdays (7:30 PM), two on weekends (3:30 PM + 7:30 PM) | ✅ |
-| Minimum 2–3 days between a team's matches | ✅ |
-| No 3+ consecutive away matches | ✅ (strong scheduling preference) |
-| Balanced home/away streaks | ✅ (max streak of 2 enforced in practice) |
-| Minimize long-distance travel | ✅ (haversine-distance heuristic) |
-| Prime-time slots for popular/rivalry teams | ✅ |
-| Public holidays weighted for attendance | ✅ |
+The fixture generation system follows the constraints below to create a realistic and balanced tournament schedule.
+
+| **Constraint** | **Description** |
+|----------------|-----------------|
+| Double Round Robin | Every team plays every other team twice (one home match and one away match). |
+| One Match per Team per Day | A team cannot be scheduled for more than one match on the same day. |
+| Balanced Home Matches | Each team plays an equal number of home and away matches over the season. |
+| Venue Availability | A venue cannot host more than one match at the same time. |
+| Venue Blackout Dates | Matches are not scheduled on dates when a venue is unavailable. |
+| Match Time Slots | One match is scheduled on weekdays (7:30 PM), while weekends have two matches (3:30 PM and 7:30 PM). |
+| Rest Period | A minimum gap of 2–3 days is maintained between consecutive matches for each team. |
+| Away Match Limit | No team is scheduled for more than two consecutive away matches. |
+| Home/Away Balance | Home and away fixtures are distributed evenly throughout the season to avoid long streaks. |
+| Travel Optimization | The schedule minimizes long-distance travel whenever possible. |
+| Prime-Time Fixtures | Popular teams and rivalry matches are preferentially assigned to prime-time television slots. |
+| Public Holiday Scheduling | Important matches are prioritized on public holidays to maximize attendance and viewership. |
 
 See [Known limitations](#known-limitations) for the honest caveats on the two
 "soft preference" rows above.
@@ -195,10 +197,10 @@ http://localhost/index.html
 | `season_report.txt` | Plain-text summary of the latest playoffs run | No |
 | `PlayoffResults.csv` | Current season's playoff bracket results | No |
 | `history.csv` | One row per completed season: `Season,Champion,RunnerUp` | No |
-| `archive_season_N_schedule.csv` | Archived schedule for season N | Your call (see below) |
-| `archive_season_N_results.csv` | Archived match results for season N | Your call |
-| `archive_season_N_points.csv` | Archived points table for season N | Your call |
-| `archive_season_N_playoffs.csv` | Archived playoff bracket for season N | Your call |
+| `archive_season_N_schedule.csv` | Archived schedule for season N | No |
+| `archive_season_N_results.csv` | Archived match results for season N | No |
+| `archive_season_N_points.csv` | Archived points table for season N | No |
+| `archive_season_N_playoffs.csv` | Archived playoff bracket for season N | No |
 
 
 ---
